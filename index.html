@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyLog | Study Time Tracker for Students</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#home" class="logo">Study<span>Log</span></a>
+      <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">&#9776;</button>
+      <nav id="navMenu" class="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#tracker">Tracker</a>
+        <a href="#tips">Study Tips</a>
+        <a href="#contact">Contact</a>
+        <button id="themeBtn" class="theme-btn">Dark Mode</button>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <h1>Study a little every day.</h1>
+        <p>StudyLog helps students record study sessions, reach a daily goal, and see which subjects get the most time.</p>
+        <a href="#tracker" class="btn">Start Logging</a>
+      </div>
+    </section>
+
+
+    <section id="tracker" class="section container">
+      <h2>Study Tracker</h2>
+      <div class="cards">
+        <div class="card"><h3>Studied Today</h3><p id="todayDisplay" class="amount">0m</p></div>
+        <div class="card"><h3>Daily Goal</h3><p id="goalDisplay" class="amount">0m</p></div>
+        <div class="card"><h3>Total Studied</h3><p id="totalDisplay" class="amount">0m</p></div>
+      </div>
+      <div id="categoryTotals" class="cat-totals"></div>
+      <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+      <p id="goalMessage" class="message"></p>
+
+
+      <form id="goalForm" class="inline-form">
+        <label for="goalInput">Set your daily goal (minutes)</label>
+        <input type="number" id="goalInput" min="5" step="5" placeholder="e.g. 120">
+        <button type="submit" class="btn">Save Goal</button>
+      </form>
+
+
+      <h3 class="subhead">Log a Study Session</h3>
+      <form id="sessionForm" class="form-grid">
+        <div><label for="sessionTopic">Topic</label>
+          <input type="text" id="sessionTopic" placeholder="What did you study?"></div>
+        <div><label for="sessionMinutes">Minutes</label>
+          <input type="number" id="sessionMinutes" min="1" step="1" placeholder="45"></div>
+        <div><label for="sessionCategory">Subject</label>
+          <select id="sessionCategory">
+            <option value="Programming">Programming</option>
+            <option value="Math">Math</option>
+            <option value="Reading">Reading</option>
+            <option value="Projects">Projects</option>
+            <option value="Others">Others</option>
+          </select></div>
+        <div><label for="sessionDate">Date</label>
+          <input type="date" id="sessionDate"></div>
+        <div class="btn-row">
+          <button type="submit" id="sessionSubmit" class="btn">Add</button>
+          <button type="button" id="cancelEdit" class="btn" hidden>Cancel</button>
+        </div>
+      </form>
+      <p id="sessionError" class="error"></p>
+
+
+      <div class="list-header">
+        <h3 class="subhead">Study History</h3>
+        <select id="filterCategory" aria-label="Filter by subject">
+          <option value="All">All subjects</option>
+          <option value="Programming">Programming</option>
+          <option value="Math">Math</option>
+          <option value="Reading">Reading</option>
+          <option value="Projects">Projects</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div class="toolbar">
+        <select id="sortBy" aria-label="Sort sessions">
+          <option value="newest">Newest added</option>
+          <option value="most">Most minutes</option>
+          <option value="least">Fewest minutes</option>
+        </select>
+        <button type="button" id="exportBtn" class="btn small">Download CSV</button>
+        <button type="button" id="clearAll" class="delete-btn">Clear all sessions</button>
+      </div>
+      <ul id="sessionList" class="session-list"></ul>
+    </section>
+
+
+    <section id="tips" class="section container">
+      <h2>Study Tips</h2>
+      <div class="cards tips">
+        <div class="card"><h3>Short and often</h3><p>Four 30-minute sessions beat one tiring 2-hour session.</p></div>
+        <div class="card"><h3>Take breaks</h3><p>Rest 5 minutes after every 25 minutes of focused study.</p></div>
+        <div class="card"><h3>Practice, don't reread</h3><p>Write code or solve problems. Testing yourself builds memory.</p></div>
+      </div>
+    </section>
+
+
+    <section id="contact" class="section container">
+      <h2>Contact Us</h2>
+      <form id="contactForm" class="stack-form" novalidate>
+        <div><label for="contactName">Name</label>
+          <input type="text" id="contactName"><small id="nameError" class="error"></small></div>
+        <div><label for="contactEmail">Email</label>
+          <input type="email" id="contactEmail"><small id="emailError" class="error"></small></div>
+        <div><label for="contactMessage">Message</label>
+          <textarea id="contactMessage" rows="4"></textarea><small id="messageError" class="error"></small></div>
+        <button type="submit" class="btn">Send Message</button>
+        <p id="formSuccess" class="success"></p>
+      </form>
+    </section>
+  </main>
+
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> StudyLog. Built for Web Development 1 at Sacred Heart College.</p>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
